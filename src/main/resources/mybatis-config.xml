@@ -10,10 +10,10 @@
         <package name="com.fodala.pojo"/>
     </typeAliases>
     <mappers>
-        <mapper resource="com/phizer/mapper/ContainerMapper.xml"/>
-        <mapper resource="com/phizer/mapper/CampaignMapper.xml"/>
-        <mapper resource="com/phizer/mapper/CityMapper.xml"/>
-        <mapper resource="com/phizer/mapper/IndividualMapper.xml"/>
-        <mapper resource="com/phizer/mapper/UserMapper.xml"/>
+        <mapper resource="com/fodala/mapper/ContainerMapper.xml"/>
+        <mapper resource="com/fodala/mapper/CampaignMapper.xml"/>
+        <mapper resource="com/fodala/mapper/CityMapper.xml"/>
+        <mapper resource="com/fodala/mapper/IndividualMapper.xml"/>
+        <mapper resource="com/fodala/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
