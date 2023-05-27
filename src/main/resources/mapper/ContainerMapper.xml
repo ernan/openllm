@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fodala.mapper.ContainerMapper">
+
+    <select id="all" resultType="Container">
+        select `id`, `name`, `status`, `cleaner`, `cleaned`, `expires`, `created`, `updated`
+        from container
+    </select>
+
+    <select id="findById" resultType="Container">
+        select `id`, `name`, `status`, `cleaner`, `cleaned`, `expires`, `created`, `updated`
+        from container
+        where `id` = #{id}
+    </select>
+
+    <insert id="insert">
+        insert into container (`name`, `status`, `cleaner`, `cleaned`, `expires`, `created`, `updated`)
+        values (#{container.name}, #{container.status}, #{container.cleaner}, strftime('%Y-%m-%dT%H:%M:%f','now'),
+        strftime('%Y-%m-%dT%H:%M:%f','now'), strftime('%Y-%m-%dT%H:%M:%f','now'), strftime('%Y-%m-%dT%H:%M:%f','now'))
+    </insert>
+
+    <update id="update">
+        update container
+        set `name` = #{container.name},
+        `status` = #{container.status},
+        `cleaner` = #{container.cleaner},
+        `cleaned` = #{container.cleaned},
+        `expires` = #{container.expires},
+        `created` = #{container.created},
+        `updated` = strftime('%Y-%m-%dT%H:%M:%f','now')
+        where `id` = #{container.id}
+    </update>
+
+    <delete id="delete">
+        delete
+        from container
+        where `id` = #{id}
+    </delete>
+
+    <select id="history" resultType="ContainerHistory">
+        select `id`, `container_id`, `name`, `status`, `cleaner`, `cleaned`, `expires`, `created`, `updated`
+        from container_history
+        where `container_id` = #{id}
+        order by `updated` desc
+    </select>
+
+</mapper>

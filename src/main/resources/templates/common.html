@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<head th:fragment="header" id="header">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/script/jquery-1.7.2.js}" type="text/javascript"></script>
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+    <title th:text="${metaTitle} ? ${metaTitle} : 'Phizer Product Flow'"></title>
+</head>
+
+<nav class="navbar navbar-default" id="navbar">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li th:classappend="${currentTab == 'campaigns'} ? 'active':''"><a href="/campaigns">Campaigns</a></li>
+            <li th:classappend="${currentTab == 'containers'} ? 'active':''"><a href="/containers">Containers</a>
+            </li>
+            <li th:classappend="${currentTab == 'users'} ? 'active':''"><a href="/users">Users</a></li>
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div id="manager_header">
+    <a th:href="@{/manager/book/1}">library management</a>
+    <a th:href="@{/manager/order}">order management</a>
+    <a th:href="@{/}">back to mall</a>
+</div>
+
+<div id="bottom">
+    <span>
+        Copyright Phizer &copy;2023
+    </span>
+</div>
+
+</body>
+</html>

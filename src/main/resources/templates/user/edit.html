@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit User</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    </link>
+</head>
+
+<body class="container">
+<br/>
+<h1>Edit User</h1>
+<br/>
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <img th:if="${userImage != null}" th:src="@{'data:image/jpeg;base64,'+${userImage.getPhoto()}}"/>
+            <div class="col-md-8 mx-auto">
+                <h2>Upload User Photo</h2>
+                <p class="alert alert-primary" th:if="${message ne null}" th:text="${message}"></p>
+                <form enctype="multipart/form-data" method="post" th:action="@{/upload}">
+                    <input name="id" th:value="${user.id}" type="hidden"/>
+                    <div class="form-group">
+                        <input accept="image/*" class="form-control-file" name="image" type="file">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Upload image</button>
+                </form>
+                <span th:if="${msg != null}" th:text="${msg}"></span>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}">
+</div>
+<div class="with:80%">
+    <form class="form-horizontal" method="post" th:action="@{/user}" th:object="${user}">
+        <input name="id" th:value="*{id}" type="hidden"/>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="name">Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="name" name="name" placeholder="name" th:value="*{name}"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="username">username</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="username" name="username" placeholder="username"
+                       th:value="*{username}" type="text"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="password">Password</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="password" name="password" placeholder="Password"
+                       th:value="*{password}" type="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="email">email</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="email" name="email" placeholder="email" th:value="*{email}"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-info" type="submit" value="Submit"/>
+                <a class="btn btn-info" href="/users" th:href="@{/users}">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

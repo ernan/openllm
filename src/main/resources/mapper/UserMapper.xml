@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fodala.mapper.UserMapper">
+
+    <select id="all" resultType="User">
+        select `id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from users
+    </select>
+
+    <select id="selectByName" resultType="User">
+        select `id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from users
+        where `username` = #{username}
+    </select>
+
+    <select id="findByEmail" resultType="User">
+        select `id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from users
+        where `email` = #{email}
+    </select>
+
+    <select id="findByUsername" resultType="User">
+        select `id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from users
+        where `username` = #{username}
+    </select>
+
+    <select id="findById" resultType="User">
+        select `id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from users
+        where `id` = #{id}
+    </select>
+
+    <insert id="insert">
+        insert into users (`name`, `username`, `email`, `password`, `created`, `updated`)
+        values (#{user.name}, #{user.username}, #{user.email}, #{user.password}, strftime('%Y-%m-%dT%H:%M:%f','now'),
+        strftime('%Y-%m-%dT%H:%M:%f','now'))
+    </insert>
+
+    <update id="update">
+        update users
+        set `name` = #{user.name},
+        `username` = #{user.username},
+        `email` = #{user.email},
+        `password` = #{user.password},
+        `created` = #{user.created},
+        `updated` = strftime('%Y-%m-%dT%H:%M:%f','now')
+        where `id` = #{user.id}
+    </update>
+
+
+    <select id="selectByNameAndPassword" resultType="User">
+        select `id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from users
+        where `username` = #{username}
+        and `password` = #{password}
+    </select>
+
+    <delete id="delete">
+        delete
+        from users
+        where `id` = #{id}
+    </delete>
+
+    <select id="history" resultType="UserHistory">
+        select `id`, `user_id`, `name`, `username`, `email`, `password`, `created`, `updated`
+        from user_history
+        where `user_id` = #{id}
+        order by `updated` desc
+    </select>
+
+    <select id="roles" resultType="Role">
+        select `id`, `username`, `role`
+        from role
+        where `username` = #{username}
+        order by `role`
+    </select>
+
+    <update id="insertImage" parameterType="UserImage">
+        insert into user_image (`user_id`, `photo`)
+        values(#{userImage.userId}, #{userImage.photo})
+    </update>
+
+
+    <select id="selectImage" resultType="UserImage">
+        select `id`, `user_id`, `photo`
+        from user_image
+        where `user_id` = #{id}
+        limit 1
+    </select>
+
+</mapper>

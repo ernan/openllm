@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Container List</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<div th:replace="~{common::#navbar}"></div>
+<br/>
+<h1>Container List</h1>
+<br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Cleaned By</th>
+            <th>Cleaned At</th>
+            <th>Expires At</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="container : ${containers}">
+            <th scope="row" th:text="${container.id}">1</th>
+            <td th:text="${container.name}">Container 1</td>
+            <td th:text="${container.status}">Initial</td>
+            <td th:text="${container.cleaner}">neo@one.com</td>
+            <td th:text="${container.cleaned}"></td>
+            <td th:text="${container.expires}"></td>
+            <td th:text="${container.created}"></td>
+            <td th:text="${container.updated}"></td>
+            <td><a th:href="@{container(id=${container.id})}">edit</a></td>
+            <td><a th:href="@{container/delete(id=${container.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a class="btn btn-info" href="/container" th:href="@{/container}">add</a>
+    </div>
+</div>
+<div th:replace="~{common::#bottom}"></div>
+</body>
+</html>

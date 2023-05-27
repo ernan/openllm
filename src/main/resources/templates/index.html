@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Phiser Flow Management</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+
+<body class="container">
+<div th:replace="~{common::#navbar}"></div>
+<br/>
+<h1>Phiser Flow Management</h1>
+<br/>
+<div class="with:80%">
+    <div class="row">
+        <div class="col-sm-3" th:each="campaign : ${campaigns}">
+            <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 15rem;">
+                    <div class="card-body">
+                        <svg class="bi bi-basket3" fill="currentColor" height="16" viewBox="0 0 16 16"
+                             width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/>
+                        </svg>
+                        <table>
+                            <tr>
+                                <th class="small text-muted pr-2" scope="row">Name</th>
+                                <td th:text="${campaign.name}">Name</td>
+                            </tr>
+                            <tr>
+                                <th class="small text-muted pr-2" scope="row">Cleaner</th>
+                                <td th:text="${campaign.cleaner}">Cleaner</td>
+                            </tr>
+                            <tr>
+                                <th class="small text-muted pr-2" scope="row">cleaned</th>
+                                <td th:text="${campaign.cleaned}">cleaned</td>
+                            </tr>
+                            <tr>
+                                <th class="small text-muted pr-2" scope="row">Expires</th>
+                                <td th:text="${campaign.expires}">expires</td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <p class="card-text" th:text="${campaign.status}"></p>
+                        <a class="btn btn-primary" th:href="@{campaign(id=${campaign.id})}">Edit</a>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{common::#bottom}"></div>
+</body>
+
+</html>
