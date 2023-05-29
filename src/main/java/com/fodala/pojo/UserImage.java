@@ -30,7 +30,9 @@ public class UserImage {
     }
 
     public String getPhoto() {
-        logger.info("Returning binary data of length: {}", photo.length());
+        if (photo != null) {
+            logger.info("Returning binary data of length: {}", photo.length());
+        }
         return photo;
     }
 
