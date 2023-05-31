@@ -32,7 +32,7 @@
         </div>
     </div>
 </section>
-<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}">
+<div th:class="${'alert ' + alertClass}" th:if="${message}" th:text="${message}">
 </div>
 <div class="with:80%">
     <form class="form-horizontal" method="post" th:action="@{/user}" th:object="${user}">

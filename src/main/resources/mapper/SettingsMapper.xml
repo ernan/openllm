@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fodala.mapper.SettingsMapper">
+
+    <select id="all" resultType="Setting">
+        select `id`, `category`, `name`, `value`, `comment`, `seq`, `username`
+        from setting
+    </select>
+
+    <select id="findById" resultType="Setting">
+        select `id`, `category`, `name`, `value`, `comment`, `seq`, `username`
+        from setting
+        where `id` = #{id}
+    </select>
+
+    <insert id="insert">
+        insert into setting (`category`, `name`, `value`, `comment`, `seq`, `username`)
+        values (#{setting.category}, #{setting.name}, #{setting.value}, #{setting.comment}, #{setting.seq}, #{setting.username})
+    </insert>
+
+    <update id="update">
+        update Setting
+        set `category` = #{setting.category},
+        `name` = #{setting.name},
+        `value` = #{setting.value},
+        `comment` = #{setting.comment},
+        `seq` = #{setting.seq},
+        `username` = #{setting.username},
+        where `id` = #{setting.id}
+    </update>
+
+    <delete id="delete">
+        delete
+        from setting
+        where `id` = #{id}
+    </delete>
+
+    <select id="history" resultType="SettingHistory">
+        select `id`, `setting_id`, `category`, `name`, `value`, `comment`, `seq`, `username`, `updated`
+        from setting_history
+        where `setting_id` = #{id}
+        order by `updated` desc
+    </select>
+
+
+</mapper>

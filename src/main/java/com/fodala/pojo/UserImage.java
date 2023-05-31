@@ -1,6 +1,5 @@
 package com.fodala.pojo;
 
-import com.fodala.controller.UploadController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,8 @@ public class UserImage {
 
     public UserImage(Integer userId, byte[] data) {
         this.userId = userId;
-        this.photo = Base64.getEncoder().encodeToString(data);;
+        this.photo = Base64.getEncoder().encodeToString(data);
+        ;
     }
 
     public Integer getUserId() {

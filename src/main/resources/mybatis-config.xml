@@ -5,6 +5,7 @@
 <configuration>
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="defaultStatementTimeout" value="100"/>
     </settings>
     <typeAliases>
         <package name="com.fodala.pojo"/>
@@ -13,7 +14,7 @@
         <mapper resource="com/fodala/mapper/ContainerMapper.xml"/>
         <mapper resource="com/fodala/mapper/CampaignMapper.xml"/>
         <mapper resource="com/fodala/mapper/CityMapper.xml"/>
-        <mapper resource="com/fodala/mapper/IndividualMapper.xml"/>
+        <mapper resource="com/fodala/mapper/SettingsMapper.xml"/>
         <mapper resource="com/fodala/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

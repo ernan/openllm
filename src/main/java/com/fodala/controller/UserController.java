@@ -2,10 +2,13 @@ package com.fodala.controller;
 
 import com.fodala.pojo.User;
 import com.fodala.pojo.UserImage;
+import com.fodala.service.UserImageService;
 import com.fodala.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserImageService userImageService;
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String user(@RequestParam(value = "id", required = false) Integer id, Model model) {
@@ -35,7 +40,7 @@ public class UserController {
                 userImage = new UserImage();
             }
             model.addAttribute("history", userService.history(id));
-            model.addAttribute("userImage", userImage);
+            model.addAttribute("data", userImage.getPhoto());
         } else {
             user = userService.createEmpty();
         }

@@ -149,6 +149,31 @@ CREATE TABLE container_history (
 	updated TEXT NULL
 );
 
+DROP TABLE IF EXISTS setting;
+CREATE TABLE setting (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT NOT NULL,
+	status TEXT NOT NULL,
+	cleaner TEXT NULL,
+	cleaned TEXT NULL,
+	expires TEXT NULL,
+	created TEXT NULL,
+	updated TEXT NULL
+);
+
+DROP TABLE IF EXISTS setting_history;
+CREATE TABLE setting_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    container_id INTEGER,
+	name TEXT NOT NULL,
+	status TEXT NOT NULL,
+	cleaner TEXT NULL,
+	cleaned TEXT NULL,
+	expires TEXT NULL,
+	created TEXT NULL,
+	updated TEXT NULL
+);
+
 DROP TRIGGER IF EXISTS container_trigger;
 CREATE TRIGGER container_trigger 
    AFTER UPDATE ON container

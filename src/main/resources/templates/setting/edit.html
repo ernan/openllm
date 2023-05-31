@@ -2,81 +2,80 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Edit Container</title>
+    <title>Edit setting</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
     <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}"></link>
-    <script th:src="@{/js/jquery-3.7.0.js}"></script>
-    <script th:src="@{/js/bootstrap-datepicker.js}"></script>
+    <link rel="javascript" th:href="@{/js/bootstrap-datepicker.js}"></link>
 </head>
 <body class="container">
 <div th:replace="~{common::#navbar}"></div>
 <br/>
-<h1>Edit Container</h1>
+<h1>Edit setting</h1>
 <br/>
 <div class="with:80%">
-    <form class="form-horizontal" method="post" th:action="@{/container}" th:object="${container}">
+    <form class="form-horizontal" id="setting-form" method="post" th:action="@{/setting}" th:object="${setting}">
         <input name="id" th:value="*{id}" type="hidden"/>
-        <div class="form-group row">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Name</label>
             <div class="col-sm-10">
                 <input class="form-control" id="name" name="name" placeholder="name" th:value="*{name}" type="text"/>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label" for="status">Status</label>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="status">status</label>
             <div class="col-sm-10">
                 <select class="form-control" id="status" name="status">
-                    <option th:each="status : ${T(com.fodala.pojo.ContainerStatusEnum).values()}"
-                            th:text="${status}" th:value="*{status}">
+                    <option th:each="status : ${T(com.fodala.pojo.settingStatusEnum).values()}"
+                            th:text="${status}" th:value="${status}">
                     </option>
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="cleaner">Cleaner</label>
             <div class="col-sm-10">
                 <input class="form-control" id="cleaner" name="cleaner" placeholder="cleaner" th:value="*{cleaner}"
                        type="text"/>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label" for="cleaned">Cleaned</label>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="cleaned">cleaned</label>
             <div class="col-sm-10">
                 <input class="form-control" id="cleaned" name="cleaned" placeholder="cleaned" th:value="*{cleaned}"
                        type="text"/>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label" for="expires">Expires</label>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="expires">expires</label>
             <div class="col-sm-10">
                 <input class="form-control" id="expires" name="expires" placeholder="cleaned" th:value="*{expires}"
                        type="text"/>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label" for="created">Cleaned</label>
-            <div class="col-sm-10" id="createdRangePicker">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="created">cleaned</label>
+            <div class="col-sm-10">
                 <input class="form-control" id="created" name="created" placeholder="created" th:value="*{created}"
                        type="text"/>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="updated">updated</label>
             <div class="col-sm-10">
                 <input class="form-control" id="updated" name="updated" placeholder="updated" th:value="*{updated}"
                        type="text"/>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <input class="btn btn-info" type="submit" value="Submit"/>
-                <a class="btn btn-info" href="/containers" th:href="@{/containers}">Back</a>
+                <a class="btn btn-info" href="/settings" th:href="@{/settings}">Back</a>
             </div>
         </div>
     </form>
 </div>
 <div class="with:80%" th:if="${not #lists.isEmpty(history)}">
-    <h1>Container History</h1>
+    <h1>setting History</h1>
     <br/>
     <table class="table table-hover">
         <thead>
@@ -92,31 +91,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="container : ${history}">
-            <th scope="row" th:text="${container.id}">1</th>
-            <td th:text="${container.name}">container 1</td>
-            <td th:text="${container.status}">Initial</td>
-            <td th:text="${container.cleaner}">neo@one.com</td>
-            <td th:text="${container.cleaned}"></td>
-            <td th:text="${container.expires}"></td>
-            <td th:text="${container.created}"></td>
-            <td th:text="${container.updated}"></td>
+        <tr th:each="setting : ${history}">
+            <th scope="row" th:text="${setting.id}">1</th>
+            <td th:text="${setting.name}">setting 1</td>
+            <td th:text="${setting.status}">Initial</td>
+            <td th:text="${setting.cleaner}">neo@one.com</td>
+            <td th:text="${setting.cleaned}"></td>
+            <td th:text="${setting.expires}"></td>
+            <td th:text="${setting.created}"></td>
+            <td th:text="${setting.updated}"></td>
         </tr>
         </tbody>
     </table>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#createdRangePicker').datepicker({
-            format : 'yyyy-mm-dd',
-            startDate : '2022-06-01',
-            endDate : '2023-06-01'
-        });
-    });
 
-
-
-
-</script>
 </body>
 </html>
