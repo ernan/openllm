@@ -32,7 +32,7 @@ public class DataLoaderImpl implements DataLoader {
         try (Connection connection = ds.getConnection()) {
             String sql = loadResource(resourceFile);
             Statement statement = connection.createStatement();
-            logger.info("Executing \n{}\n", sql);
+            logger.trace("Executing \n{}\n", sql);
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             logger.info("Completed loading {}.", resourceFile);
         } catch (SQLException e) {

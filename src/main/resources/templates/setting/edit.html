@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Edit setting</title>
+    <title>Edit Setting</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
     <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}"></link>
     <link rel="javascript" th:href="@{/js/bootstrap-datepicker.js}"></link>
@@ -10,52 +10,42 @@
 <body class="container">
 <div th:replace="~{common::#navbar}"></div>
 <br/>
-<h1>Edit setting</h1>
+<h1>Edit Setting</h1>
 <br/>
 <div class="with:80%">
     <form class="form-horizontal" id="setting-form" method="post" th:action="@{/setting}" th:object="${setting}">
         <input name="id" th:value="*{id}" type="hidden"/>
         <div class="form-group">
+            <label class="col-sm-2 control-label" for="category">Category</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="category" name="category" placeholder="category" th:value="*{category}" type="text"/>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="name">Name</label>
             <div class="col-sm-10">
-                <input class="form-control" id="name" name="name" placeholder="name" th:value="*{name}" type="text"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="status">status</label>
-            <div class="col-sm-10">
-                <select class="form-control" id="status" name="status">
-                    <option th:each="status : ${T(com.fodala.pojo.settingStatusEnum).values()}"
-                            th:text="${status}" th:value="${status}">
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="cleaner">Cleaner</label>
-            <div class="col-sm-10">
-                <input class="form-control" id="cleaner" name="cleaner" placeholder="cleaner" th:value="*{cleaner}"
+                <input class="form-control" id="name" name="name" placeholder="name" th:value="*{name}"
                        type="text"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="cleaned">cleaned</label>
+            <label class="col-sm-2 control-label" for="value">Value</label>
             <div class="col-sm-10">
-                <input class="form-control" id="cleaned" name="cleaned" placeholder="cleaned" th:value="*{cleaned}"
+                <input class="form-control" id="value" name="value" placeholder="value" th:value="*{value}"
                        type="text"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="expires">expires</label>
+            <label class="col-sm-2 control-label" for="comment">Comment</label>
             <div class="col-sm-10">
-                <input class="form-control" id="expires" name="expires" placeholder="cleaned" th:value="*{expires}"
+                <input class="form-control" id="comment" name="comment" placeholder="comment" th:value="*{comment}"
                        type="text"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="created">cleaned</label>
+            <label class="col-sm-2 control-label" for="seq">Sequence</label>
             <div class="col-sm-10">
-                <input class="form-control" id="created" name="created" placeholder="created" th:value="*{created}"
+                <input class="form-control" id="seq" name="seq" placeholder="seq" th:value="*{seq}"
                        type="text"/>
             </div>
         </div>
@@ -86,7 +76,7 @@
             <th>Cleaned By</th>
             <th>Cleaned At</th>
             <th>Expires At</th>
-            <th>Created At</th>
+            <th>Created At</th>jax
             <th>Updated At</th>
         </tr>
         </thead>
