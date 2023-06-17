@@ -3,20 +3,12 @@ package com.fodala.pojo;
 public class Attribute {
     private Integer id;
     private Integer objectId;
-
-    public Integer getObjectId() {
-        return objectId;
-    }
-
-    public void setObjectId(Integer objectId) {
-        this.objectId = objectId;
-    }
-
     private String objectType;
     private String name;
     private String value;
     private String comment;
     private String seq;
+
     public Attribute(Integer id, Integer objectId, String objectType, String name, String value, String comment, String seq) {
         this.id = id;
         this.objectId = objectId;
@@ -26,7 +18,16 @@ public class Attribute {
         this.comment = comment;
         this.seq = seq;
     }
+
     public Attribute() {
+    }
+
+    public Integer getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(Integer objectId) {
+        this.objectId = objectId;
     }
 
     public String getObjectType() {

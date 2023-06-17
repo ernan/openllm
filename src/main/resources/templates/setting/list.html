@@ -4,36 +4,34 @@
 <head th:replace="common :: header(metaTitle='Campaigns list')"></head>
 
 <body class="container">
-    <div th:replace="~{common::#navbar}"></div>
-    <br />
-    <h1>Settings</h1>
-    <br />
-    <div class="with:80%">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Value</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <div th:each="setting : ${settings}">
-                    <tr th:attr="row_id=${setting.id}">
-                        <td><input class="form-control" readonly="true" th:value="${setting.name}" /></td>
-                        <td><input class="form-control" readonly="true" th:value="${setting.value}" /></td>
-                        <td><input class="form-control" readonly="true" th:value="${setting.comment}" /></td>
-                    </tr>
-                </div>
-            </tbody>
-        </table>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-2 control-label">
-            <a class="btn btn-info" href="/setting" th:href="@{/setting}">Add</a>
+<div th:replace="~{common::#navbar}"></div>
+<br/>
+<h1>Settings</h1>
+<br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="setting : ${settings}">
+            <tr th:attr="row_id=${setting.id}" th:title="${setting.comment}">
+                <td><input class="form-control" readonly="true" th:value="${setting.name}"/></td>
+                <td><input class="form-control" readonly="true" th:value="${setting.value}"/></td>
+            </tr>
         </div>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a class="btn btn-info" href="/setting" th:href="@{/setting}">Add</a>
     </div>
-    <div th:replace="~{common::#bottom}"></div>
+</div>
+<div th:replace="~{common::#bottom}"></div>
 </body>
 
 </html>

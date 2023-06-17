@@ -93,19 +93,26 @@
             <version>3.6.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.neuml</groupId>
-            <artifactId>txtai.java</artifactId>
-            <version>4.5.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/txtai.java-4.5.0.jar</systemPath>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.github.neuml</groupId>-->
+<!--            <artifactId>txtai.java</artifactId>-->
+<!--            <version>4.5.0</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/src/main/resources/txtai.java-4.5.0.jar</systemPath>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.plexpt</groupId>-->
+<!--            <artifactId>chatgpt</artifactId>-->
+<!--            <version>4.0.8</version>-->
+<!--        </dependency>-->
 
         <dependency>
-            <groupId>com.github.plexpt</groupId>
-            <artifactId>chatgpt</artifactId>
-            <version>4.0.8</version>
+            <groupId>io.github.flashvayne</groupId>
+            <artifactId>chatgpt-spring-boot-starter</artifactId>
+            <version>1.0.4</version>
         </dependency>
+
     </dependencies>
 
     <build>

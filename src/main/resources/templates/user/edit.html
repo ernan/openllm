@@ -20,7 +20,7 @@
             <div class="col-md-8 mx-auto">
                 <h2>Upload User Photo</h2>
                 <p class="alert alert-primary" th:if="${message ne null}" th:text="${message}"></p>
-                <form enctype="multipart/form-data" method="post" th:action="@{/upload}">
+                <form enctype="multipart/form-data" method="post" th:action="@{/uploadUserImage}">
                     <input name="id" th:value="${user.id}" type="hidden"/>
                     <div class="form-group">
                         <input accept="image/*" class="form-control-file" name="image" type="file">
@@ -28,6 +28,7 @@
                     <button class="btn btn-primary" type="submit">Upload image</button>
                 </form>
                 <span th:if="${msg != null}" th:text="${msg}"></span>
+                <span th:if="${processingTime != null}" th:text="${processingTime}"></span>
             </div>
         </div>
     </div>

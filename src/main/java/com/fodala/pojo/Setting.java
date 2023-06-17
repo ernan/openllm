@@ -9,6 +9,7 @@ public class Setting {
 
     private String seq;
     private String username;
+
     public Setting(Integer id, String category, String name, String value, String comment, String seq, String username) {
         this.id = id;
         this.category = category;

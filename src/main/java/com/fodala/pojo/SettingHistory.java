@@ -8,6 +8,7 @@ public class SettingHistory {
     private String value;
     private String comment;
     private String seq;
+
     public SettingHistory(Integer id, Integer settingId, String category, String name, String value, String comment, String seq) {
         this.id = id;
         this.settingId = settingId;

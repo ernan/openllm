@@ -27,7 +27,7 @@ public class UploadController {
     @Autowired
     UserMapper userMapper;
 
-    @PostMapping("/upload")
+    @PostMapping("/uploadUserImage")
     public String uploadImage(Model model, @RequestParam("id") Integer id, @RequestParam("image") MultipartFile file) throws IOException {
         StringBuilder fileNames = new StringBuilder();
         if (file.getOriginalFilename().length() == 0) {

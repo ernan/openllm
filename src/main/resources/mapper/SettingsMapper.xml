@@ -17,7 +17,8 @@
 
     <insert id="insert">
         insert into setting (`category`, `name`, `value`, `comment`, `seq`, `username`)
-        values (#{setting.category}, #{setting.name}, #{setting.value}, #{setting.comment}, #{setting.seq}, #{setting.username})
+        values (#{setting.category}, #{setting.name}, #{setting.value}, #{setting.comment}, #{setting.seq},
+        #{setting.username})
     </insert>
 
     <update id="update">
